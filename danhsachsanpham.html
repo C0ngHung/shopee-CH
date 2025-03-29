@@ -83,7 +83,7 @@
                       <!-- <li class="header__navbar-item header__navbar-item--strong header__navbar-item--separate">Đăng ký</li>
                       <li class="header__navbar-item header__navbar-item--strong">Đăng nhập</li> -->
                       <li class="header__navbar-item header__navbar-user">
-                        <img src="https://down-vn.img.susercontent.com/file/6cefa3b74955f85ab913aea40070ce27_tn" alt="user" class="header_navbar-user-img">
+                        <img src="/assets/img/1.png" alt="user" class="header_navbar-user-img">
                         <span class="header__navbar-user-name">Công Hùng</span>
 
                         <ul class="header__navbar-user-menu">
@@ -120,7 +120,7 @@
 
                 <div class="header__search">
                   <div class="header__search-input-wrap">
-                    <input type="text" class="header__search-input" placeholder="Nhập để tìm kiếm sản phẩm">            
+                    <input id="search-input" type="text" class="header__search-input" placeholder="Nhập để tìm kiếm sản phẩm" oninput="searchProducts()">            
 
                     <!-- Search history -->
                     <div class="header__search-history">
@@ -249,20 +249,23 @@
                   </h3>
       
                   <ul class="category-list">
-                    <li class="category-item category-item--active">
+                    <li class="category-item category-item--active" data-category="all">
                       <a href="#" class="category-item__link">Sản Phẩm</a>
                     </li>
-                    <li class="category-item">
-                      <a href="#" class="category-item__link">Laptop Gaming</a>
-                    </li>
-                    <li class="category-item">
+                    <li class="category-item" data-category="laptop">
                       <a href="#" class="category-item__link">Laptop</a>
                     </li>
-                    <li class="category-item">
-                      <a href="#" class="category-item__link">Laptop Văn Phòng</a>
+                    <li class="category-item" data-category="monitor">
+                      <a href="#" class="category-item__link">Màn Hình</a>
                     </li>
-                    <li class="category-item">
-                      <a href="#" class="category-item__link">Phần Mềm Office</a>
+                    <li class="category-item" data-category="headphone">
+                      <a href="#" class="category-item__link">Tai Nghe</a>
+                    </li>
+                    <li class="category-item" data-category="keyboard">
+                      <a href="#" class="category-item__link">Bàn Phím</a>
+                    </li>
+                    <li class="category-item" data-category="mouse">
+                      <a href="#" class="category-item__link">Chuột</a>
                     </li>
                   </ul>
                 </nav>
@@ -271,9 +274,9 @@
               <div class="grid__column-10">
                 <div class="home-filter">
                   <span class="home-filter__lable">Sắp xếp theo</span>
-                  <button class="home-filter__btn btn">Phổ biến</button>
-                  <button class="home-filter__btn btn btn--primary">Mới nhất</button>
-                  <button class="home-filter__btn btn">Bán chạy</button>
+                  <button data-sort="popular" class="home-filter__btn btn">Phổ biến</button>
+                  <button data-sort="newest" class="home-filter__btn btn btn--primary">Mới nhất</button>
+                  <button data-sort="best-selling" class="home-filter__btn btn">Bán chạy</button>
 
                   <div class="select-input">
                     <span class="select-input__lable">Giá</span>
@@ -282,10 +285,10 @@
                     <!-- List Options -->
                     <ul class="select-input__list">
                       <li class="select-input__item">
-                        <a href="" class="select-input__link">Giá: Thấp đến cao</a>
+                        <a href="" class="select-input__link" data-sort="asc">Giá: Thấp đến cao</a>
                       </li>
                       <li class="select-input__item">
-                        <a href="" class="select-input__link">Giá: Cao đến thấp</a>
+                        <a href="" class="select-input__link" data-sort="desc">Giá: Cao đến thấp</a>
                       </li>
                     </ul>
                   </div>
@@ -306,13 +309,13 @@
                   </div>
                 </div>
 
-                <div class="home-product">
+                <div class="home-product" id="home-product">
                   <!-- Grid -> Row -> Column -->
-                   <div class="grid__row">
+                   <!-- <div class="grid__row"> -->
                      <!-- Product item -->
-                    <div class="grid_colum-2-4">
+                    <!-- <div class="grid_colum-2-4">
                       <a class="home-product-item" href="chitietsanpham.html">
-                        <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ras8-m3dcohvbv5bw5d.webp);">
+                        <div class="home-product-item__img" style="background-image: url(	./assets/img/LapTop/laptop1.webp);">
                           <h4 class="home-product-item__name">MacBook Air M1 2020 (8 core CPU| 7 core GPU| 8GB RAM| 256GB SSD)</h4>
                           <div class="home-product-item__price">
                             <span class="home-product-item__price-old">44.990.000đ</span>
@@ -347,9 +350,9 @@
                         </div>
                       </a>
 
-                    </div>
+                    </div> -->
 
-                    <div class="grid_colum-2-4">
+                    <!-- <div class="grid_colum-2-4">
                       <a class="home-product-item" href="#">
                         <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
                           <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
@@ -386,9 +389,47 @@
                         </div>
                       </a>
 
-                    </div>
+                    </div> -->
 
-                    <div class="grid_colum-2-4">
+                    <!-- <div class="grid_colum-2-4">
+                      <a class="home-product-item" href="#">
+                        <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
+                          <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
+                          <div class="home-product-item__price">
+                            <span class="home-product-item__price-old">15.200.000đ</span>
+                            <span class="home-product-item__price-current">14.790.000đ</span>
+                          </div>
+                          <div class="home-product-item__action">
+                            <span class="home-product-item__like home-product-item__like--liked">
+                              <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
+                              <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
+                            </span>
+                            <div class="home-product-item__rating">
+                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
+                            </div>
+                            <span class="home-product-item__sold">88 đã bán</span>
+                          </div>
+                          <div class="home-product-item__origin">
+                            <span class="home-produ ct-item__brand">Whoo</span>
+                            <span class="home-product-item__origin-name">Nhật Bản</span>
+                          </div>
+                          <div class="home-product-item__favourite">
+                            <i class="fa-solid fa-check"></i>
+                            <span>Yêu thích</span>
+                          </div>
+                          <div class="home-product-item__sale-off">
+                            <span class="home-product-item__sale-off-percent">10%</span>
+                            <span class="home-product-item__sale-off-label">GIẢM</span>
+                          </div>
+                        </div>
+                      </a>
+                    </div> -->
+
+                    <!-- <div class="grid_colum-2-4">
                       <a class="home-product-item" href="#">
                         <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
                           <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
@@ -425,9 +466,9 @@
                         </div>
                       </a>
 
-                    </div>
+                    </div> -->
 
-                    <div class="grid_colum-2-4">
+                    <!-- <div class="grid_colum-2-4">
                       <a class="home-product-item" href="#">
                         <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
                           <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
@@ -464,9 +505,9 @@
                         </div>
                       </a>
 
-                    </div>
+                    </div> -->
 
-                    <div class="grid_colum-2-4">
+                    <!-- <div class="grid_colum-2-4">
                       <a class="home-product-item" href="#">
                         <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
                           <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
@@ -503,9 +544,9 @@
                         </div>
                       </a>
 
-                    </div>
+                    </div> -->
 
-                    <div class="grid_colum-2-4">
+                    <!-- <div class="grid_colum-2-4">
                       <a class="home-product-item" href="#">
                         <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
                           <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
@@ -542,9 +583,9 @@
                         </div>
                       </a>
 
-                    </div>
+                    </div> -->
 
-                    <div class="grid_colum-2-4">
+                    <!-- <div class="grid_colum-2-4">
                       <a class="home-product-item" href="#">
                         <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
                           <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
@@ -581,9 +622,9 @@
                         </div>
                       </a>
 
-                    </div>
+                    </div> -->
 
-                    <div class="grid_colum-2-4">
+                    <!-- <div class="grid_colum-2-4">
                       <a class="home-product-item" href="#">
                         <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
                           <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
@@ -620,9 +661,9 @@
                         </div>
                       </a>
 
-                    </div>
+                    </div> -->
 
-                    <div class="grid_colum-2-4">
+                    <!-- <div class="grid_colum-2-4">
                       <a class="home-product-item" href="#">
                         <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
                           <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
@@ -659,47 +700,8 @@
                         </div>
                       </a>
 
-                    </div>
-
-                    <div class="grid_colum-2-4">
-                      <a class="home-product-item" href="#">
-                        <div class="home-product-item__img" style="background-image: url(	https://down-vn.img.susercontent.com/file/vn-11134207-7ra0g-m6f86fm2wndz62_tn.webp);">
-                          <h4 class="home-product-item__name">Laptop Acer Aspire Lite 15 AL15-71P-517D i5-12450H | 16GB | 512GB | 15.6' FHD | Win 11</h4>
-                          <div class="home-product-item__price">
-                            <span class="home-product-item__price-old">15.200.000đ</span>
-                            <span class="home-product-item__price-current">14.790.000đ</span>
-                          </div>
-                          <div class="home-product-item__action">
-                            <span class="home-product-item__like home-product-item__like--liked">
-                              <i class="home-product-item__like-icon-empty fa-regular fa-heart"></i>
-                              <i class="home-product-item__like-icon-fill fa-solid fa-heart"></i>
-                            </span>
-                            <div class="home-product-item__rating">
-                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
-                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
-                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
-                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
-                              <i class="home-product-item__star--gold fa-solid fa-star"></i>
-                            </div>
-                            <span class="home-product-item__sold">88 đã bán</span>
-                          </div>
-                          <div class="home-product-item__origin">
-                            <span class="home-produ ct-item__brand">Whoo</span>
-                            <span class="home-product-item__origin-name">Nhật Bản</span>
-                          </div>
-                          <div class="home-product-item__favourite">
-                            <i class="fa-solid fa-check"></i>
-                            <span>Yêu thích</span>
-                          </div>
-                          <div class="home-product-item__sale-off">
-                            <span class="home-product-item__sale-off-percent">10%</span>
-                            <span class="home-product-item__sale-off-label">GIẢM</span>
-                          </div>
-                        </div>
-                      </a>
-
-                    </div>
-                   </div>
+                    </div> -->
+                   <!-- </div> -->
                 </div>
 
                 <ul class="pagination home-product__pagination">
@@ -829,7 +831,7 @@
 
           <div class="footer_bottom">
             <div class="grid">
-                <p class="footer__text">© 2025 - Bản quyền thuộc về Công ty TNHH Shopee</p>
+                <p class="footer__text">© 2025 - Bản quyền thuộc về C0ngHungDCH@gmail.com</p>
             </div>
           </div>  
         </footer>
@@ -936,4 +938,6 @@
       </div>
     </div> -->
   </body>
+  <script src="/assets/js/create.js"></script>
+  <script src="/assets/js/main.js"></script>
 </html>
